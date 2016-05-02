@@ -1,0 +1,46 @@
+Cody McMahon
+Compiler Project part 1
+
+
+
+1. Exercise 2.10. Modify Scanner in the j-- compiler to scan (and ignore) Java multi-line comments.
+
+Basically if you find a "/*" ignore everthing until an EOF or a "*/" again it really is quite simple.
+It did take a little trial and error to get "/*  **/" to work but it really wan't too hard.
+
+2. Exercise 2.11. Modify Scanner in the j-- compiler to recognize and return all Java operators that are not reserved words.
+
+I just googled a big list of all the operators for java and added them one at a time to Scanner.java and
+TokenInfo.java. Really straight forward stuff consider all the already implemented operators.
+
+3. Exercise 2.12. Modify Scanner in the j-- compiler to recognize and return all Java reserved words.
+
+This was even easier than the previous one because you essentially just add words to a big list in both files.
+
+4. Exercise 2.13. Modify Scanner in the j-- compiler to recognize and return Java double-precision literals (returned as DOUBLE_LITERAL).
+
+This wasn't too hard I just made it so it recongnizes one decimal point in each number and makes it a double.
+It will also recongnize numbers with a 'd' or 'D' at the end as a double.
+
+5. Exercise 2.14. Modify Scanner in the j-- compiler to recognize and return all other literals in Java, for example, FLOAT_LITERAL, LONG_LITERAL, etc.
+
+This was pretty straight forward after implementing the previous one  just check for the decimals or the letters at the end.
+
+6. (Bonus) Exercise 2.15. Modify Scanner in the j-- compiler to recognize and return all other representations of integers (hexadecimal, octal, etc.).
+
+This one was a tiny bit harder but not too much you just check if the first character is a zero then the x then the next identifer.
+
+Some interesting things about the bonus:
+First of all I use DEC_LITERAL instead of int literal because OCT_LITERAL HEX_LITERAL DEC_LITERAL and BIN_LITERAL are all 
+INT_LITERALs and I thought it would be easier to implement future parts if I defferentiated between them.
+
+Second of all "0" is an octal number.
+
+Third of all for the "0x","0b" ones I trimmed that "0x","0b" part off the token it could easily be added back I just thought it was nicer this way.
+
+the test that I did was use the "javatest.java" file in the j--/bin folder I was running in cmd with 
+the command "j-- -t javatest.java" to see what it was outputting.
+
+
+I included this file and the javatest.java file outside of the j-- folder and inside as well to try and make
+them easy to find.
