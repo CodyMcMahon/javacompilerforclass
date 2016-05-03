@@ -81,10 +81,12 @@ class Scanner {
         reserved.put(TRUE.image(), TRUE);
         reserved.put(VOID.image(), VOID);
         reserved.put(WHILE.image(), WHILE);
+        reserved.put(DO.image(), DO);
         
         // added keywords
             reserved.put(ASSERT.image(), ASSERT);
             reserved.put(BREAK.image(), BREAK);
+            reserved.put(CATCH.image(), CATCH);
             reserved.put(BYTE.image(), BYTE);
             reserved.put(CASE.image(), CASE);
             reserved.put(CONST.image(), CONST);
@@ -108,6 +110,7 @@ class Scanner {
             reserved.put(THROWS.image(), THROWS);
             reserved.put(TRANSIENT.image(), TRANSIENT);
             reserved.put(TRY.image(), TRY);
+            reserved.put(UNTIL.image(), UNTIL);
             reserved.put(VOLATILE.image(), VOLATILE);
 
         // Prime the pump.
@@ -153,7 +156,7 @@ class Scanner {
                   } 
                 //end thing I added
                 } else {
-                    reportScannerError("Operator / is not supported in j--.");
+                    return new TokenInfo(DIVIDE, line);
                 }
                 
             } else {

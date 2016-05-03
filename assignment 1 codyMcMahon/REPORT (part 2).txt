@@ -1,0 +1,48 @@
+Cody McMahon
+Compiler Project part 1
+
+The test that I did was use the "javatest.java" and "ptest.java" and "ptest2.java" file in the j--/bin folder with cmd using 
+the command "j-- -p javatest.java" and looking at what it was outputting. It is just a big xml that looks fancy.
+there were some exceptions with the ptest but thats because of stuff that still is not implemented.(it is just a file for this project itself)
+
+Exercise 3.21. Modify the Parser to parse and return nodes for the double literal and the float literal. 
+This is really straight forward once you understand that you have to add a class for each one it looks something like.
+else if (have(DOUBLE_LITERAL)) {
+    return new JLiteralDouble(line, scanner.previousToken().image());
+}
+same for float really.
+
+Exercise 3.22. Modify the Parser to parse and return nodes for the long literal. 
+Same as above.
+
+Exercise 3.23. Modify the Parser to parse and return nodes for all the additional operators that are defined in Java but not yet in j--. 
+This one was really a pain you add around 20 classes and all in the right order but if you look through it the order of operations makes sense.
+This felt like half of this entire assignment.
+I followed this https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html .
+
+Exercise 3.24. Modify the Parser to parse and return nodes for conditional expressions, for example, (a > b) ? a : b. 
+I added this as an operator because it's in the order or operations and thats how I implemented it in part one.
+
+Exercise 3.25. Modify the Parser to parse and return nodes for the for-statement, including both the basic for-statement and the enhanced for-statement. 
+This is also pretty straight forward if you just look at the while loop first it's almost the same.
+
+Exercise 3.26. Modify the Parser to parse and return nodes for the switch-statement. 
+Because switch statements are mostly just a giant block this really was rather simple to implement.
+
+Exercise 3.27. Modify the Parser to parse and return nodes for the try-catch-finally statement. 
+This one was very weird becasue I have never actually used it in coding Java but after added a bunch of statements I got it to work.
+
+
+Exercise 3.28. Modify the Parser to parse and return nodes for the throw-statement. 
+This one was weird because I put it with the statements and it was vastly shorter than all of the other ones which actually made it harder to implement.
+
+
+Exercise 3.29. Modify the Parser to deal with a throws-clause in method declarations. 
+This was not too hard pretty much just copy the super part but put it in an additional field that you add.
+
+(Bonus) Exercise 3.30. Modify the Parser to deal with methods and constructors having variable arity, that is, a variable number of arguments. 
+I did not even attempt this
+
+(Bonus) Exercise 3.34. Say we wish to add a do-until statement to j--. For example, 
+I implemented this it was pretty much like a while loop but with the conditional part and statement swapped but I did not write out the grammer or anything like that.
+

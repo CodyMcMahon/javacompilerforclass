@@ -32,6 +32,13 @@ class Type {
 
     /** The primitive type, int. */
     public final static Type INT = typeFor(int.class);
+	
+	//FIX THIS FOR TYPECHECKING
+    public final static Type FLOAT = typeFor(int.class);
+    public final static Type LONG = typeFor(int.class);
+    public final static Type SHORT = typeFor(int.class);
+    public final static Type DOUBLE = typeFor(int.class);
+    //FIX THIS
 
     /** The primitive type, char. */
     public final static Type CHAR = typeFor(char.class);

@@ -29,6 +29,7 @@ enum TokenKind {
             //ones I added
             ASSERT("assert"),
             BREAK("break"),
+            CATCH("catch"),
             BYTE("byte"),
             CASE("case"),
             CONST("cost"),
@@ -53,18 +54,20 @@ enum TokenKind {
             TRANSIENT("transient"),
             TRY("try"),
             VOLATILE("volatile"),
+			UNTIL("until"),
+			DO("do"),
 
 
             //no words (absolute mess)
             PLUS(
             "+"), ASSIGN("="), DEC("--"), EQUAL("=="), GT(">"),LT("<"), GTE(">="), INC("++"), LAND(
-            "&&"), LOR("||"), LE("<="), LNOT("!"), MINUS("-"),MINUS_ASSIGN("-="), 
+            "&&"), LOR("||"), LE("<="), LNOT("!"), MINUS("-"),MINUS_ASSIGN("-="), DIVIDE("/"),
             PLUS_ASSIGN("+="),NOT_EQUAL("!="), MULTIPLY_ASSIGN("*="),DIVIDE_ASSIGN("/="), STAR("*"), LPAREN(
             "("), RPAREN(")"), LCURLY("{"), RCURLY("}"), LBRACK("["), RBRACK(
             "]"), SEMI(";"), COMMA(","), DOT("."), MODULUS("%"), BIT_AND("&"), BIT_OR("|"), BIT_XOR("^"), 
             BIT_COMP("~"), LSHIFT("<<"), RSHIFT(">>"), ZRSHIFT(">>>"), MODULUS_ASSIGN("%="),
             LSHIFT_ASSIGN("<<="), RSHIFT_ASSIGN(">>="), BIT_AND_ASSIGN("&="), BIT_XOR_ASSIGN("^="),
-            BIT_OR_ASSIGN("|"), 
+            BIT_OR_ASSIGN("|="), 
             
             
             //not sure what to name these
@@ -74,8 +77,8 @@ enum TokenKind {
             
             
             //literals and stuff
-             IDENTIFIER("<IDENTIFIER>"), 
-             INT_LITERAL("<INT_LITERAL>"), 
+            IDENTIFIER("<IDENTIFIER>"), 
+            INT_LITERAL("<INT_LITERAL>"), 
             CHAR_LITERAL("<CHAR_LITERAL>"), 
             STRING_LITERAL("<STRING_LITERAL>"),
             

@@ -25,6 +25,7 @@ class JClassDeclaration extends JAST implements JTypeDecl {
 
     /** Super class type. */
     private Type superType;
+    private Type exceptType;
 
     /** This class type. */
     private Type thisType;
@@ -59,11 +60,12 @@ class JClassDeclaration extends JAST implements JTypeDecl {
      */
 
     public JClassDeclaration(int line, ArrayList<String> mods, String name,
-            Type superType, ArrayList<JMember> classBlock) {
+            Type superType,Type exceptType, ArrayList<JMember> classBlock) {
         super(line);
         this.mods = mods;
         this.name = name;
         this.superType = superType;
+		this.exceptType = exceptType;
         this.classBlock = classBlock;
         hasExplicitConstructor = false;
         instanceFieldInitializations = new ArrayList<JFieldDeclaration>();
