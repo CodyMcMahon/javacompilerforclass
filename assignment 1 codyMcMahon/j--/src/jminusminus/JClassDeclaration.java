@@ -41,6 +41,9 @@ class JClassDeclaration extends JAST implements JTypeDecl {
 
     /** Static (class) fields of this class. */
     private ArrayList<JFieldDeclaration> staticFieldInitializations;
+    
+    /* my variable MINE MINE MINE */
+    static boolean canBePublic = true;
 
     /**
      * Construct an AST node for a class declaration given the line number, list
@@ -64,6 +67,7 @@ class JClassDeclaration extends JAST implements JTypeDecl {
         super(line);
         this.mods = mods;
         this.name = name;
+        //this.canBePublic;
         this.superType = superType;
 		this.exceptType = exceptType;
         this.classBlock = classBlock;
@@ -227,6 +231,23 @@ class JClassDeclaration extends JAST implements JTypeDecl {
                             + "the following abstract methods: %s", methods);
 
         }
+        /*
+        Exercise 4.1. The compiler does not enforce the Java rule that only one type declaration (that is, class declaration in j--) be declared public. Repair this in one of the analyze() methods.
+        
+        */
+        if(mods.contains("public")){
+          if(canBePublic){
+            canBePublic = false;
+          }
+          else{
+            JAST.compilationUnit.reportSemanticError(line,
+                    "only one public class allowed");
+          }
+        }
+        //end my stuff
+        
+        
+        
         return this;
     }
 

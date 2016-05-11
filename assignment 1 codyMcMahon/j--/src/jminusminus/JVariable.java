@@ -73,6 +73,14 @@ class JVariable extends JExpression implements JLhs {
                 type = Type.ANY;
                 JAST.compilationUnit.reportSemanticError(line,
                         "Cannot find name: " + name);
+                        //mystuff just copied from the else
+                JExpression newTree = new JFieldSelection(line(), false
+                        || (context.methodContext() != null && context
+                                .methodContext().isStatic()) ? new JVariable(
+                        line(), definingType.toString()) : new JThis(line),
+                        name);
+                return (JExpression) newTree.analyze(context);
+                //end my stuff
             } else {
                 // Rewrite a variable denoting a field as an
                 // explicit field selection

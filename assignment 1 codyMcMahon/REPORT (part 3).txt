@@ -1,0 +1,24 @@
+Cody McMahon
+Compiler Project part 3
+
+For both my tests I just did normal compilation and checked the errors so like "j-- anytest.java" in cmd in the bin folder.
+
+The first test I did was on "publicclass.java" which you can find in both the folder that this file is in and the folder containing the j-- binary.
+It just spits out an error about how you can only have one public class and ends.
+
+My second test was using "anytest.java" I made a variable not have a type and there was definately cascading errors rather than just one.
+
+Exercise 4.1
+for this I just added "static boolean canBePublic = true;" as a field and made it so when you make a public class it turns false and if you make
+another it causes and error. It is a pretty simple solution.
+
+Exercise 4.2
+Basically I just copy pasted this chunk of code that was in the "else" when the variable had a type the one thing I had to change is I made it
+always false when checking for if it was static because this variable doesn't have a type so it can't be static.
+
+JExpression newTree = new JFieldSelection(line(), false
+                        || (context.methodContext() != null && context
+                                .methodContext().isStatic()) ? new JVariable(
+                        line(), definingType.toString()) : new JThis(line),
+                        name);
+                return (JExpression) newTree.analyze(context);
