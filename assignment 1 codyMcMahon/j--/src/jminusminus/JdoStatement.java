@@ -66,12 +66,12 @@ class JDoStatement extends JStatement {
         // Branch out of the loop on the test condition
         // being false
         output.addLabel(test);
-        condition.codegen(output, out, false);
 
         // Codegen body
         body.codegen(output);
 
         // Unconditional jump back up to test
+        condition.codegen(output, out, false);
         output.addBranchInstruction(GOTO, test);
 
         // The label below and outside the loop

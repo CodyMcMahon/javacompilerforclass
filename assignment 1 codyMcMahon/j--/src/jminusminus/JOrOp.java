@@ -95,8 +95,8 @@ class JOrOp extends JExpression {
      *            .class file).
      */
 
-    public void codegen(CLEmitter output) {
-        /*output.addReferenceInstruction(NEW, type.jvmName());
+    public void codegen(CLEmitter output) {/*
+        output.addReferenceInstruction(NEW, type.jvmName());
         output.addNoArgInstruction(DUP);
         for (JExpression argument : arguments) {
             argument.codegen(output);

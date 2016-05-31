@@ -1,0 +1,138 @@
+Cody McMahon Part 4
+
+There was some major problems doing this part. A lot of the ways that I did the parsing part made it so it was very difficult to do a lot of the code getn parts.
+The first one went quite well but the next three were nightmares I wrote out I the code should look but I was not able to implement them into them into the actual code,
+so I did not, I also did not do any of the extra credit for this portion.
+
+
+4.6 Add the do-while statement to j--, adding it to your compiler and testing it thoroughly
+
+this one did work!!
+
+for the do while loops the test was at the top like this
+
+        // Branch out of the loop on the test condition
+        // being false
+        output.addLabel(test);
+        condition.codegen(output, out, false);
+        
+and an unconditional jump at the bottom to go to the top
+
+        // Unconditional jump back up to test
+        output.addBranchInstruction(GOTO, test);
+
+and I put the conditional at the bottom like this
+
+        condition.codegen(output, out, false);
+        output.addBranchInstruction(GOTO, test);
+        
+Exercise 5.7. Add the classic for-statement to j--, adding it to your compiler and testing it thoroughly. 
+
+Unfortunately previous implementations of this made it very difficult to complete but if that wasn't the case this is what
+I would have done.
+
+this is waht this part looks like originally
+    public void codegen(CLEmitter output) {
+        // Need two labels
+        String test = output.createLabel();
+        String out = output.createLabel();
+
+        // Branch out of the loop on the test condition
+        // being false
+        output.addLabel(test);
+        condition.codegen(output, out, false);
+
+        // Codegen body
+        body.codegen(output);
+
+        // Unconditional jump back up to test
+        output.addBranchInstruction(GOTO, test);
+
+        // The label below and outside the loop
+        output.addLabel(out);
+    }
+
+this is how it should look
+    public void codegen(CLEmitter output) {
+        // Need two labels
+        String test = output.createLabel();
+        String out = output.createLabel();
+
+        //left most side of for loops expression for(THIS,,)              <-- added this
+        initializeation.codegen(output);
+        
+        // Branch out of the loop on the test condition
+        // being false
+        output.addLabel(test);
+        condition.codegen(output, out, false);//for(,THIS,)this part     
+
+        // Codegen body
+        body.codegen(output);
+        
+        //third part of for loop that is normally an incrementfor(,,THIS) 
+        increment.codegen(output);                                       <-- added this
+        
+        // Unconditional jump back up to test
+        output.addBranchInstruction(GOTO, test);
+
+        // The label below and outside the loop
+        output.addLabel(out);
+    }
+
+Exercise 5.11. Add conditional expressions to j--
+    
+Same as this the previous one I really could not implement this in any reasonable way by this is how the code gen should look.
+    
+    //conditional?firstPart:secondPart
+    public void codegen(CLEmitter output) {
+        //make two labels
+        String elseLabel = output.createLabel();
+        String endLabel = output.createLabel();
+        
+        conditional.codegen(output, conditionLabel, false);
+        
+        firstPart.codegen(output);
+        
+        output.addBranchInstruction(GOTO, endLabel);
+            
+        output.addLabel(conditionLabel);
+        
+        secondPart.codegen(output);
+        
+        output.addLabel(endLabel);
+    }
+    
+Exercise 5.12. Add the conditional-or operator || to j--
+
+Same as this the previous one I really could not implement this in any reasonable way by this is how the code gen should look.
+
+    //firstPart || secondPart
+    public void codegen(CLEmitter output) {
+        
+        //three labels
+        String elseLabel = output.createLabel();
+        String endIfLabel = output.createLabel();
+        String isTrueLabel = output.createLabel();
+        
+        //if first condition is false check second condition
+        firstPart.codegen(output, elseLabel, false);
+        
+        //if second instruction is true it will come up here and if the first condition was true it will stay here
+        output.createLabel(isTrueLabel);
+        
+        //make a true and then end code gen
+        output.addNoArgInstruction(ICONST_1); // true
+        output.addBranchInstruction(GOTO, endIfLabel);
+        
+        //check second condition
+        output.addLabel(elseLabel);
+        
+        //if second condition is true go back up to the true part
+        secondPart.codegen(output, elseLabel, true);
+        
+        //if its false make a false and end code gen
+        output.addNoArgInstruction(ICONST_0); // false
+        output.addLabel(endIfLabel);
+    }
+    
+    

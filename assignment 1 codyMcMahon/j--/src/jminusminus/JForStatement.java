@@ -43,8 +43,8 @@ class JForStatement extends JStatement {
      * @return the analyzed (and possibly rewritten) AST subtree.
      *///TODO THISFUNCTION
 
-    public JForStatement analyze(Context context) {
-        /*condition = condition.analyze(context);
+    public JForStatement analyze(Context context) {/*
+        condition = condition.analyze(context);
         condition.type().mustMatchExpected(line(), Type.BOOLEAN);
         body = (JStatement) body.analyze(context);*/
         return this;
@@ -58,7 +58,7 @@ class JForStatement extends JStatement {
      *            .class file).
      *///TODO THISFUNCTION
 
-    public void codegen(CLEmitter output) {
+    public void codegen(CLEmitter output) {/*
         // Need two labels
         String test = output.createLabel();
         String out = output.createLabel();
@@ -75,7 +75,7 @@ class JForStatement extends JStatement {
         output.addBranchInstruction(GOTO, test);
 
         // The label below and outside the loop
-        output.addLabel(out);
+        output.addLabel(out);*/
     }
 
     /**
